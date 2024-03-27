@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+	{{ ckeditor.load() }}
+</head>
+<body>
+	<div class="task-page-header">
+		<h1>Детали задачи</h1>
+		<div class="back-tasks-page">
+			<a href="/tasks">К списку задач</a>
+		</div>
+	</div>
+	<div class="task-detail-content">
+		<div class="table">
+			<div class="table-caption"><h1>{{ todobase.task }}</h1></div>
+			<div class="table-colgroup">
+				<div class="table-col" style="width: 20%"></div>
+				<div class="table-col"></div>
+			</div>
+			<div class="table-thead">
+				<div class="table-tr">
+					<div class="table-th">Статус задачи</div>
+					<div class="table-th">{{ todobase.task_stat }}</div>
+				</div>
+			</div>
+			<div class="table-tbody">
+				<div class="table-tr">
+					<div class="table-th">Категория задачи</div>
+					<div class="table-td">{{ todobase.task_cat }}</div>
+				</div>
+				<div class="table-tr">
+					<div class="table-th">Проект</div>
+					<div class="table-td">{{ todobase.task_project }}</div>
+				</div>
+				<div class="table-tr">
+					<div class="table-th">Описание</div>
+					<div class="table-td">
+						<div class=textarea">{{ todobase.descript|safe }}</div>
+					</div>
+				</div>
+			</div>
+			<div class="table-tfoot">
+				<div class="table-tr">
+					<div class="table-th">Дата создания:</div>
+					<div class="table-th">{{ todobase.date.date() }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-botton">
+		<div class="task-delete-botton">
+    		<a href="/task/{{ todobase.id }}/delete">Удалить</a>
+		</div>
+		<div class="task-update-botton">
+			<a href="/task/{{ todobase.id }}/update">Редактировать</a>
+		</div>
+	</div>
+</body>
+</html>

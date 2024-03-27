@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="task-page-header">
+        <h1>Все задачи на сайте</h1>
+        <div class="task-create-botton">
+            <a href="/create-task">Создать задачу</a>
+        </div>
+    </div>
+    <div class="task-block">
+    {% if todobase |length > 0 %}
+    {% for el in todobase %}
+    <a href="/task/{{ el.id }}">
+        <div class="task-conteiner">
+            <div class="task-content">
+                <b>{{ el.task }}</b><br>
+                <p>{{ el.task_stat }}<br>
+                   {{ el.task_cat }}<br>
+                   {{ el.task_project }}</p>
+                <b>Дата создания: {{ el.date.date() }}</b>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>У нас еще нет задач на сайте</p>
+    {% endif %}
+    </div>
+</body>
+</html>

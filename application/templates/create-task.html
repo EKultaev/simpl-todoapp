@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+	{{ ckeditor.load() }}
+</head>
+<body>
+<div class="task-page-header">
+		<h1>создание задачи</h1>
+		<div class="back-tasks-page">
+			<a href="/tasks">К списку задач</a>
+		</div>
+	</div>
+	<form method="post">
+		<div class="task-detail-content">
+			<div class="table">
+				<div class="table-caption"><h1>Форма создания</h1></div>
+				<div class="table-colgroup">
+					<div class="table-col" style="width: 30%"></div>
+					<div class="table-col"></div>
+				</div>
+				<div class="table-thead">
+					<div class="table-tr">
+						<div class="table-th">Задача</div>
+						<div class="table-th"><input type="text" name="task" id="task"></div>
+					</div>
+				</div>
+				<div class="table-tbody">
+					<div class="table-tr">
+						<div class="table-th">Статус задачи</div>
+						<div class="table-td">
+							<select name="task_stat" id="task_stat" class="task-cat-dropdown">
+								<option value=""></option>
+                                <option value="Активна">Активна</option>
+                                <option value="Не активна">Не активна</option>
+                            </select>
+						</div>
+					</div>
+					<div class="table-tr">
+						<div class="table-th">Категори задачи</div>
+						<div class="table-td">
+                            <select name="task_cat" id="task_cat" class="task-cat-dropdown">
+								<option value=""></option>
+                                <option value="Важно и срочно">Важно и срочно</option>
+                                <option value="Важно и не срочно">Важно и не срочно</option>
+                                <option value="Не важно, но срочно">Не важно, но срочно</option>
+                                <option value="Не важно и не срочно">Не важно и не срочно</option>
+                            </select>
+                        </div>
+					</div>
+					<div class="table-tr">
+						<div class="table-th">Проект</div>
+						<div class="table-td"><input type="text" name="task_project" id="task_project"></div>
+					</div>
+        			<div class="table-tr">
+						<div class="table-th">Описание</div>
+						<div class="table-td">
+							<div class="textarea">{{ ckeditor.create() }}</div>
+						</div>
+					</div>
+				</div>
+    		</div>
+		</div>
+		<div class="page-botton">
+			<input type="submit" value="Сохранить" class="task-acept-new-det">
+		</div>
+	</form>
+</body>
+</html>
